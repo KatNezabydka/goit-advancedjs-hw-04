@@ -1,20 +1,26 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Main page</title>
-  <link rel="stylesheet" href="./css/common/base.css" />
+  <link rel="stylesheet" href="./css/gallery.css" />
 </head>
-
 <body>
-<div class="container">
-  <ul class="menu">
-    <li>
-      <a class="menu-link" href="./pages/gallery.html">Gallery</a>
-    </li>
-  </ul>
-</div>
+<section class="search-image">
+  <div class="container">
+    <form class="search-form js-search-form">
+      <input class="input search-input js-search-input" placeholder="Search images..." type="text" name="user_query"
+             required />
+      <button class="search-btn btn" type="submit">Search</button>
+    </form>
+    <div id="loader" class="loader" style="display: none;">Loading images, please wait...</div>
+    <ul class="gallery js-gallery">
+    </ul>
+    <p class="not-found-text"></p>
+    <button class="btn js-load-more load-more-btn is-hidden" type="button">Load more</button>
+  </div>
+</section>
+<script type="module" src="./main.js"></script>
 </body>
 </html>
