@@ -1,0 +1,36 @@
+@import url('common/base.css');
+
+.btn {
+  border: 1px solid var(--havy-blue);
+  border-radius: 8px;
+  width: 100%;
+  align-items: center;
+  padding: 8px 16px;
+  font-size: 16px;
+  background: var(--havy-blue);
+  color: var(--white);
+  transition: var(--animation);
+  transition-property: background-color;
+}
+
+.btn:not(.disabled):hover, .btn:not(.disabled):focus {
+  cursor: pointer;
+  background: var(--light-blue);
+}
+
+.disabled {
+  background: var(--disabled-bg);
+  color: var(--disabled-font-color);
+  border: 1px solid var(--disabled-bg);
+}
+
+.load-more-btn.btn{
+  display: block;
+  margin: 0 auto;
+  max-width: 125px;
+}
+
+.load-more-btn.is-hidden {
+  display: none;
+}
+
