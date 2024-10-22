@@ -7,6 +7,7 @@ export async function handleSearch(event) {
   event.preventDefault();
   galleryEl.innerHTML = '';
   params.page = 1;
+  loadMoreService.init();
 
   const form = event.currentTarget;
   const userQuery = form.elements.user_query.value.trim();
@@ -54,11 +55,11 @@ async function handleLoadMore() {
     configureScroll();
 
     if (params.maxPage === params.page) {
-      console.log('here');
       loadMoreService.showLoaderNoMoreElement();
       loadMoreBtnEl.removeEventListener('click', handleLoadMore);
+    } else {
+      loadMoreService.showBtn();
     }
-    console.log('not here');
   } catch (err) {
     console.log(err);
   }

@@ -5,6 +5,12 @@ export default class LoadMoreService {
     this.button = buttonEl;
     this.loader = loaderEl;
   }
+
+  init(){
+    this.hideBtn();
+    this.setLoaderNormal();
+    this.hideLoader();
+  }
   hideBtn() {
     this.button.classList.add(LoadMoreService.HIDDEN_CLASS);
   }
@@ -26,18 +32,13 @@ export default class LoadMoreService {
     this.showLoader();
   }
 
-  setMoreBtn(){
-    this.showBtn();
-    this.hideLoader()
-  }
-
   showLoaderNoMoreElement() {
-    this.prevText = this.loader.textContent;
     this.loader.textContent = "We're sorry, but you've reached the end of search results.";
+    this.showLoader()
   }
 
   setLoaderNormal() {
-    this.loader.textContent = this.prevText;
+    this.loader.textContent = "Loading images, please wait...";
   }
 }
 

@@ -15,7 +15,7 @@
   width: 534px;
   display: flex;
   gap: 8px;
-  margin: 0 auto 32px;
+  margin: 0 auto;
 }
 
 .input{
@@ -33,6 +33,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  margin: 32px 0;
 }
 
 .gallery-card {

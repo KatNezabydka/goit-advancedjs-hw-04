@@ -1,4 +1,3 @@
-import ButtonService from './btn-service.js';
 import LoadMoreService from './load-more-service.js';
 
 export const searchFormEl = document.querySelector('.js-search-form');
