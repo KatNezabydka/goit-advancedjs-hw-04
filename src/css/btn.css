@@ -30,7 +30,7 @@
   max-width: 125px;
 }
 
-.load-more-btn.is-hidden {
+.load-more-btn.is-hidden, .loader.is-hidden {
   display: none;
 }
 

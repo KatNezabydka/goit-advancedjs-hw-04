@@ -28,7 +28,6 @@ function updateGallery(data) {
   const photosMarkup = createCardsMarkup(data.hits);
   galleryEl.insertAdjacentHTML('beforeend', photosMarkup);
   lightbox.refresh();
-  configureScroll();
 }
 
 function configureScroll() {
@@ -42,4 +41,4 @@ function configureScroll() {
   });
 }
 
-export {updateGallery};
+export {updateGallery, configureScroll};

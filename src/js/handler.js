@@ -1,17 +1,12 @@
-import { galleryEl, loadMoreBtnEl, params } from './utils/constants.js';
-import ButtonService from './utils/btn-service';
+import { galleryEl, loadMoreService, loadMoreBtnEl, params } from './utils/constants.js';
 import { getPhotos } from './pixabay-api.js';
-import { updateGallery } from './render-functions';
+import { configureScroll, updateGallery } from './render-functions';
 import { showErrorToast } from './utils/toast.js';
-
-const loadMoreBtnService = new ButtonService(loadMoreBtnEl);
 
 export async function handleSearch(event) {
   event.preventDefault();
   galleryEl.innerHTML = '';
   params.page = 1;
-
-  loadMoreBtnService.hide();
 
   const form = event.currentTarget;
   const userQuery = form.elements.user_query.value.trim();
@@ -23,8 +18,9 @@ export async function handleSearch(event) {
   params.query = userQuery;
 
   try {
-    document.getElementById('loader').style.display = 'flex';
+    loadMoreService.showLoader();
     const data = await getPhotos(params);
+    loadMoreService.hideLoader();
 
     if (data.total === 0) {
       galleryEl.innerHTML = '';
@@ -35,35 +31,34 @@ export async function handleSearch(event) {
     params.maxPage = Math.ceil(data.total / params.perPage);
 
     updateGallery(data);
-
     if (params.maxPage > params.page) {
-      loadMoreBtnService.show();
+      loadMoreService.showBtn();
       loadMoreBtnEl.addEventListener('click', handleLoadMore);
     }
   } catch (err) {
     console.log(err);
   } finally {
-    document.getElementById('loader').style.display = 'none';
     form.reset();
   }
 }
 
 async function handleLoadMore() {
-
-  loadMoreBtnService.setLoading();
   params.page += 1;
 
   try {
+    loadMoreService.setLoading();
     const data = await getPhotos(params);
+    loadMoreService.hideLoader();
 
     updateGallery(data);
-    loadMoreBtnService.setNormal();
+    configureScroll();
 
     if (params.maxPage === params.page) {
-      loadMoreBtnService.hide();
-
+      console.log('here');
+      loadMoreService.showLoaderNoMoreElement();
       loadMoreBtnEl.removeEventListener('click', handleLoadMore);
     }
+    console.log('not here');
   } catch (err) {
     console.log(err);
   }

@@ -20,6 +20,7 @@
 
 .input{
   max-width: 272px;
+  margin: 0;
   height: 40px;
 }
 
@@ -32,7 +33,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  margin-bottom: 32px;
 }
 
 .gallery-card {
